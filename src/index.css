@@ -1,17 +1,13 @@
 #root {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 50px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 body {
   font-family: sans-serif;
   line-height: 1.5;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
 }
 
 h1,
@@ -34,4 +30,8 @@ ol {
 img {
   display: block;
   max-width: 100%;
+}
+
+button {
+  cursor: pointer;
 }
