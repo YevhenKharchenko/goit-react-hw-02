@@ -4,7 +4,7 @@ const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
   return (
     <div className={css.optionsWrapper}>
       <button
-        className={(css.btn, css.good)}
+        className={css.good}
         onClick={() => {
           updateFeedback('good');
         }}
@@ -12,7 +12,7 @@ const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
         Good
       </button>
       <button
-        className={(css.btn, css.neutral)}
+        className={css.neutral}
         onClick={() => {
           updateFeedback('neutral');
         }}
@@ -20,7 +20,7 @@ const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
         Neutral
       </button>
       <button
-        className={(css.btn, css.bad)}
+        className={css.bad}
         onClick={() => {
           updateFeedback('bad');
         }}
@@ -28,7 +28,7 @@ const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
         Bad
       </button>
       {totalFeedback > 0 ? (
-        <button className={(css.btn, css.reset)} onClick={resetFeedback}>
+        <button className={css.reset} onClick={resetFeedback}>
           Reset
         </button>
       ) : (

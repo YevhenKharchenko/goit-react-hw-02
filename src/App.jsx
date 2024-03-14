@@ -25,14 +25,15 @@ function App() {
   }, [reviews]);
 
   const totalFeedback = reviews.good + reviews.neutral + reviews.bad;
+  const positivePercentage = Math.round(
+    ((reviews.good + reviews.neutral) / totalFeedback) * 100
+  );
 
   const updateFeedback = feedbackType => {
     setReviews({
       ...reviews,
       [feedbackType]: reviews[feedbackType] + 1,
     });
-
-    localStorage.setItem('reviews', JSON.stringify(reviews));
   };
 
   const resetFeedback = () => {
@@ -41,8 +42,6 @@ function App() {
       neutral: 0,
       bad: 0,
     });
-
-    localStorage.setItem('reviews', JSON.stringify(reviews));
   };
 
   return (
@@ -54,7 +53,11 @@ function App() {
         totalFeedback={totalFeedback}
       />
       {totalFeedback > 0 ? (
-        <Feedback reviews={reviews} totalFeedback={totalFeedback} />
+        <Feedback
+          reviews={reviews}
+          totalFeedback={totalFeedback}
+          positivePercentage={positivePercentage}
+        />
       ) : (
         false
       )}
