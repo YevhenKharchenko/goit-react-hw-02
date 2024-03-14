@@ -7,24 +7,20 @@ import Notification from './components/Notification/Notification';
 
 function App() {
   const [reviews, setReviews] = useState(() => {
-    const savedReviews = localStorage.getItem('reviews');
-
-    if (savedReviews !== null) {
-      return JSON.parse(savedReviews);
-    }
-
-    return {
+    const savedReviews = JSON.parse(localStorage.getItem('reviews')) ?? {
       good: 0,
       neutral: 0,
       bad: 0,
     };
+
+    return savedReviews;
   });
 
   useEffect(() => {
     localStorage.setItem('reviews', JSON.stringify(reviews));
   }, [reviews]);
 
-  const totalFeedback = reviews.good + reviews.neutral + reviews.bad;
+  const totalFeedback = Object.values(reviews).reduce((acc, el) => acc + el, 0);
   const positivePercentage = Math.round(
     ((reviews.good + reviews.neutral) / totalFeedback) * 100
   );
@@ -52,14 +48,12 @@ function App() {
         resetFeedback={resetFeedback}
         totalFeedback={totalFeedback}
       />
-      {totalFeedback > 0 ? (
+      {totalFeedback > 0 && (
         <Feedback
           reviews={reviews}
           totalFeedback={totalFeedback}
           positivePercentage={positivePercentage}
         />
-      ) : (
-        false
       )}
       {!totalFeedback && <Notification />}
     </>
