@@ -1,10 +1,12 @@
+import css from './Feedback.module.css';
+
 const Feedback = ({
   reviews: { good, neutral, bad },
   totalFeedback,
   positivePercentage,
 }) => {
   return (
-    <div>
+    <div className={css.feedback}>
       <div>
         <p>
           <b>Good:</b> {good}

@@ -4,6 +4,7 @@ import Description from './components/Description/Description';
 import Options from './components/Options/Options';
 import Feedback from './components/Feedback/Feedback';
 import Notification from './components/Notification/Notification';
+import Bar from './components/Bar/Bar';
 
 function App() {
   const [reviews, setReviews] = useState(() => {
@@ -56,6 +57,7 @@ function App() {
         />
       )}
       {!totalFeedback && <Notification />}
+      {totalFeedback > 0 && <Bar positive={positivePercentage} />}
     </>
   );
 }
